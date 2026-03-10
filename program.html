@@ -1,0 +1,94 @@
+4.UNIT TESTING
+<html>
+<head>
+<title> Form validation</title>
+<script type="text/javascript">
+function validate() {
+var uname = document.getElementById("user");
+if(uname.value $==^{\prime\prime\prime})\{$
+alert("USER NAME should not be an empty");
+uname.focus();
+return false;
+}
+var pass = document.getElementById("pass");
+if(pass.value $==^{\prime\prime n})\{$
+alert("PASSWORD should not be an empty");
+pass.focus();
+return false;
+}
+var repass = document.getElementById("repass");
+if(repass.value $==^{\prime\prime})\{$
+alert("RE-PASSWORD Shouldnot be empty");
+repass.focus();
+return false;
+}
+if(pass.value!=repass.value){
+alert("PASSWORD and RE-PASSWORD are not same.. Please give the
+ Same");
+repass.focus();
+return false;
+}
+var email= document.getElementById("email");
+if(email.value ==""){
+alert("Email Shouldnot be empty");
+email.focus();
+return false;
+}
+if(email.value.indexOf("@",0)<0){
+alert("Email Should Contail @ symbol");
+email.focus();
+return false;
+}
+if(email.value.indexOf(".",0)<0){
+alert("Email Should Contain. symbol");
+email.focus();
+return false;
+}
+var mobileno = document.getElementById("mobileno");
+if(mobileno.value $==^{\prime\prime\prime})\{$
+alert("Mobile NO. Shouldnot be empty");
+mobileno.focus();
+return false;
+}
+if(isNaN(mobileno.value)){
+alert("Mobile NO. Should be Numeric");
+mobileno.focus();
+return false;}
+if(mobileno.value.length<10){
+alert("Mobile NO. Should be 10 digit only");
+mobileno.focus();
+return false;}
+if(mobileno.value.length>10){
+alert("Mobile NO. Should be 10 digit only");
+mobileno.focus();
+return false;
+}}
+</script>
+</head>
+<body bgcolor="pink">
+<form method="post" action="val1.html" name="contact form">
+<h1 align="center">USER REGISTRATION FORM</h1>
+<table align="center"border="1">
+<tr><td>Name:</td>
+<td><input type="text" size $=^{\prime\prime}20^{\prime\prime}$ name="user" id="user"</td>
+</tr>
+<td>Pass:</td>
+<td><input type="password" size $=^{\prime\prime}8"$ name="pass" </td>
+</tr>
+<tr>
+<td>Repass:</td>
+<td><input type="password" size $=^{\prime\prime}8^{\prime\prime}$ name="repass" </td>
+</tr><tr>
+<td>email:</td>
+<td><input type="text" size $=^{\prime\prime}20^{\prime\prime}$ name="email" id="email"</td>
+</tr><tr>
+<td>Mobileno:</td>
+<td><input type="text" size $=^{\prime\prime}10^{\prime\prime}$ name="mobileno" id="mobileno"</td>
+</tr><tr>
+<td><input type="submit" value="submit" name="submit"
+ onclick="return validate();" <td>
+<td><input type="reset" value="reset" name="reset"</td>
+</tr>
+</table>
+</body>
+</html>
