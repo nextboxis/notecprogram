@@ -5,38 +5,29 @@
 </head>
 <body>
 <?php
-$con=mysql_connect('localhost','root','department');
-if(!$con)
-{
-die("Could not connect the Database".mysql_error());
+$con = mysqli_connect('127.0.0.1', 'root', '', 'test', 3307);
+if (!$con) {
+    die("Could not connect the Database: " . mysqli_connect_error());
 }
-echo"Connection Successful<br>";
-$select_db=mysql_select_db("test", $con);
-if(!$select_db)
-die("Could not connect to the Database: ".mysql_error());
-if(isset($_POST['Submit']) && !empty($_POST['uname'])&&
-!empty($_POST['pass']))
-//print_r($_POST);
-{
-$name = $_POST['uname'];
-$pass = $_POST['pass'];
-$query = "SELECT * FROM login WHERE userName='$name' AND
- password='$pass";
-$result=mysql_query($query);
-$row=mysql_num_rows($result);
-if ($row!=1){
-echo "<h3 align='center'>INVALID USER NAME AND PASSWORD</h3>";
-}else{
-header("Location:checkLogin Welcome.php");
-}
+echo "Connection Successful<br>";
+
+if (isset($_POST['Submit']) && !empty($_POST['uname']) && !empty($_POST['pass'])) {
+    $name = mysqli_real_escape_string($con, $_POST['uname']);
+    $pass = mysqli_real_escape_string($con, $_POST['pass']);
+    $query = "SELECT * FROM login WHERE userName='$name' AND password='$pass'";
+    $result = mysqli_query($con, $query);
+    $row = mysqli_num_rows($result);
+    if ($row != 1) {
+        echo "<h3 align='center'>INVALID USER NAME AND PASSWORD</h3>";
+    } else {
+        header("Location: html2.php");
+        exit;
+    }
 }
 ?>
-<h3 align="center">INTEGRATION TESTING (LOGIN Module AS a Front
- End PHPMYADMIN As
-Backend)</h3>
+<h3 align="center">INTEGRATION TESTING (LOGIN Module AS a Front End PHPMYADMIN As Backend)</h3>
 <form name="regform" action="" method="post">
-<table width="50%" border $=^{\prime\prime}0"$ align="center" cellpadding $=^{\prime\prime}10^{\prime\prime}$
-cellspacing $=^{\prime\prime}10^{\prime\prime}>$
+<table width="50%" border="0" align="center" cellpadding="10" cellspacing="10">
 <tr>
 <td>USER NAME</td>
 <td><input type="text" name="uname"></td>
@@ -46,10 +37,10 @@ cellspacing $=^{\prime\prime}10^{\prime\prime}>$
 <td><input type="password" name="pass"></td>
 </tr>
 <tr>
-<td align="right"><input type="submit" name="Submit"
- value="Submit"></td>
+<td align="right"><input type="submit" name="Submit" value="Submit"></td>
 <td><input type="reset" name="reset"></td>
 </tr>
 </table>
 </form>
-</body> </html>
+</body>
+</html>
